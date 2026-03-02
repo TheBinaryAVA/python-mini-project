@@ -156,6 +156,7 @@ function initYourProject() {
 
 ### ✅ Naming Convention
 
+- Put each Python project under a category folder (`games/`, `math/`, or `utilities/`) and keep it in its own folder: `category/Project-Name/Project-Name.py`
 - Use hyphenated names: `My-Project-Name.py`
 - Be descriptive: `Rock-Paper-Scissor.py` not `game.py`
 - Use title case for multi-word names: `Number-Guessing-Game.py`

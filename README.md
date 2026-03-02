@@ -57,7 +57,7 @@ python -m http.server 8000
 cd python-mini-project
 
 # Run any project (no installation needed!)
-python Rock-Paper-Scissor.py
+python games/Rock-Paper-Scissor/Rock-Paper-Scissor.py
 ```
 
 **That's it!** No pip installs, no virtual environments, just instant fun! 🎉
@@ -69,12 +69,12 @@ python Rock-Paper-Scissor.py
 ### 🚀 **Physics & Simulation**
 
 #### 🎯 Projectile Motion Game
-Launch projectiles, visualize trajectories, and hit random targets!
-- 🚀 Practice mode with full trajectory stats
-- 🎯 Target challenge mode with hit-zone accuracy
+Launch projectiles and visualize trajectory stats!
+- 🚀 Simple launch simulation
+- 📊 Shows TOF, Hmax, and Range
 - 📈 Matplotlib plot for each launch
 ```bash
-python Projectile-Motion-Game.py
+python math/Projectile-Motion-Game/Projectile-Motion-Game.py
 ```
 
 ### 🎲 **Games** - Test Your Luck & Skills!
@@ -89,7 +89,7 @@ Battle against the computer in this classic game!
 - 🤖 Smart computer opponent
 - 🎨 Visual feedback for wins/losses
 ```bash
-python Rock-Paper-Scissor.py
+python games/Rock-Paper-Scissor/Rock-Paper-Scissor.py
 ```
 
 </td>
@@ -101,7 +101,7 @@ Roll two dice and see your fortune!
 - 📊 Total calculation
 - 🎰 Perfect for board game nights
 ```bash
-python Roling_Dice.py
+python games/Roling-Dice/Roling-Dice.py
 ```
 
 </td>
@@ -116,7 +116,7 @@ Can you predict heads or tails?
 - 🎭 Simple yet addictive
 - ⚡ Quick decision maker
 ```bash
-python Flipping_toss.py
+python games/Flipping-toss/Flipping-toss.py
 ```
 
 </td>
@@ -128,7 +128,7 @@ Think you can read the computer's mind?
 - 📈📉 Smart hints
 - 🎊 Celebratory win screen
 ```bash
-python Number_Guessing_Game.py
+python games/Number-Guessing-Game/Number-Guessing-Game.py
 ```
 
 </td>
@@ -143,7 +143,7 @@ Classic word-guessing game!
 - ❤️ 6 attempts to guess
 - 🔤 Track guessed letters
 ```bash
-python Hangman-Game.py
+python games/Hangman-Game/Hangman-Game.py
 ```
 
 </td>
@@ -155,7 +155,7 @@ Discover your relationship status!
 - 🔮 Magical calculation
 - 💕 Friends, Love, Affection, Marriage, Enemies, or Siblings
 ```bash
-python FLAMES_Game.py
+python games/FLAMES-Game/FLAMES-Game.py
 ```
 
 </td>
@@ -174,7 +174,7 @@ Generate beautiful mathematical sequences
 - 📊 Visual array display
 - ➡️ Arrow-based formatting
 ```bash
-python Fibonacci-Series.py
+python math/Fibonacci-Series/Fibonacci-Series.py
 ```
 
 </td>
@@ -186,7 +186,7 @@ Discover mathematical beauty in triangles!
 - 🔍 View specific rows
 - 📐 Interactive exploration
 ```bash
-python Pascal-Triangle.py
+python math/Pascal-Triangle/Pascal-Triangle.py
 ```
 
 </td>
@@ -201,7 +201,7 @@ Uncover special numbers with unique properties!
 - ✅ Instant verification
 - 💡 Educational examples
 ```bash
-python Armstrong-Number.py
+python math/Armstrong-Number/Armstrong-Number.py
 ```
 
 </td>
@@ -213,7 +213,7 @@ Your mathematical companion!
 - 💪 Power & modulus support
 - 🎨 Clean menu interface
 ```bash
-python Simple-Calculator.py
+python math/Simple-Calculator/Simple-Calculator.py
 ```
 
 </td>
@@ -228,7 +228,7 @@ Explore the famous 3n+1 problem!
 - 📊 Track steps and statistics
 - 🎯 Watch numbers reach 1
 ```bash
-python Collatz-Conjecture.py
+python math/Collatz-Conjecture/Collatz-Conjecture.py
 ```
 
 </td>
@@ -241,7 +241,7 @@ All-in-one prime number toolkit!
 - 🎯 Find primes in range
 - 🧩 Prime factorization
 ```bash
-python Prime-Number-Analyzer.py
+python math/Prime-Number-Analyzer/Prime-Number-Analyzer.py
 ```
 
 </td>
@@ -260,7 +260,7 @@ Transform text into dots and dashes!
 - 📊 Complete Morse chart
 - 💬 Supports letters, numbers & symbols
 ```bash
-python Text-to-Morse.py
+python utilities/Text-to-Morse/Text-to-Morse.py
 ```
 
 </td>
@@ -272,7 +272,7 @@ Solve the classic puzzle step by step!
 - 📋 Visual tower representation
 - 🧠 Iterative solution display
 ```bash
-python Tower-of-Hanoi.py
+python utilities/Tower-of-Hanoi/Tower-of-Hanoi.py
 ```
 
 </td>
@@ -352,7 +352,7 @@ Working through these projects, you'll master:
 3. **Navigate to the project folder**
 4. **Run the Python file**:
    ```bash
-   python Rock-Paper-Scissor.py
+   python games/Rock-Paper-Scissor/Rock-Paper-Scissor.py
    ```
 5. **Have fun!** 🎉
 
@@ -375,7 +375,7 @@ We love contributions! Here's how you can help:
 1. 🍴 **Fork** the repository
 2. 🌟 **Create** a new branch (`git checkout -b feature/AmazingProject`)
 3. 💻 **Add** your mini project
-   - Python CLI version in root directory
+   - Python CLI version in a category folder (`games/`, `math/`, or `utilities/`) and then its own project folder (for example `games/Project-Name/Project-Name.py`)
    - Web implementation in `web-app/js/projects.js`
 4. ✅ **Ensure** it follows our style (emojis, clean code)
 5. 📤 **Commit** your changes (`git commit -m 'Add Amazing Project'`)

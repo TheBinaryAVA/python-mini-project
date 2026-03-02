@@ -3306,7 +3306,7 @@ function initTowerOfHanoi() {
 function getProjectileMotionHTML() {
     return `
         <div class="project-content">
-            <h2>🚀 Projectile Motion Challenge</h2>
+            <h2>🚀 Projectile Motion Calculator</h2>
             <div class="projectile-container">
                 <div class="projectile-controls">
                     <div class="control-group">
@@ -3317,25 +3317,20 @@ function getProjectileMotionHTML() {
                         <label for="projAngle">Launch Angle (°)</label>
                         <input id="projAngle" type="number" min="1" max="89" value="45">
                     </div>
-                    <div class="control-group">
-                        <label for="projTarget">Target Distance (m)</label>
-                        <input id="projTarget" type="number" min="20" max="250" value="110">
-                    </div>
                 </div>
 
                 <div class="projectile-actions">
                     <button class="btn-primary" id="launchProjectileBtn">Launch</button>
-                    <button class="btn-reset" id="randomTargetBtn">Random Target</button>
                 </div>
 
                 <div class="projectile-stats">
-                    <div class="stat-chip">⏱️ Time: <span id="projTime">0.00 s</span></div>
+                    <div class="stat-chip">⏱️ TOF: <span id="projTime">0.00 s</span></div>
+                    <div class="stat-chip">📈 Hmax: <span id="projHeight">0.00 m</span></div>
                     <div class="stat-chip">📏 Range: <span id="projRange">0.00 m</span></div>
-                    <div class="stat-chip">📈 Max Height: <span id="projHeight">0.00 m</span></div>
                 </div>
 
                 <canvas id="projectileCanvas" width="760" height="380"></canvas>
-                <p class="projectile-result" id="projectileResult">Set values and launch your shot.</p>
+                <p class="projectile-result" id="projectileResult">Set values and launch to calculate TOF, Hmax, and Range.</p>
             </div>
         </div>
 
@@ -3439,18 +3434,14 @@ function initProjectileMotion() {
 
     const speedInput = document.getElementById('projSpeed');
     const angleInput = document.getElementById('projAngle');
-    const targetInput = document.getElementById('projTarget');
     const launchBtn = document.getElementById('launchProjectileBtn');
-    const randomTargetBtn = document.getElementById('randomTargetBtn');
 
     const timeEl = document.getElementById('projTime');
     const rangeEl = document.getElementById('projRange');
     const heightEl = document.getElementById('projHeight');
     const resultEl = document.getElementById('projectileResult');
 
-    const targetRadius = 5;
-
-    function drawScene(points, xMax, yMax, targetX) {
+    function drawScene(points, xMax, yMax) {
         const width = canvas.width;
         const height = canvas.height;
         const marginLeft = 50;
@@ -3480,25 +3471,6 @@ function initProjectileMotion() {
         ctx.fillText('Height (m)', 8, marginTop + 12);
         ctx.fillText('Distance (m)', width - 95, height - 10);
 
-        const targetCanvasX = mapX(targetX);
-        const groundY = height - marginBottom;
-
-        ctx.fillStyle = '#10b981';
-        ctx.beginPath();
-        ctx.arc(targetCanvasX, groundY, 8, 0, Math.PI * 2);
-        ctx.fill();
-
-        ctx.strokeStyle = '#10b981';
-        ctx.setLineDash([5, 6]);
-        ctx.beginPath();
-        ctx.moveTo(targetCanvasX, marginTop);
-        ctx.lineTo(targetCanvasX, groundY);
-        ctx.stroke();
-        ctx.setLineDash([]);
-
-        ctx.fillStyle = '#10b981';
-        ctx.fillText(`Target: ${targetX.toFixed(1)} m`, Math.max(55, targetCanvasX - 40), marginTop + 16);
-
         if (points.length > 1) {
             ctx.strokeStyle = '#2563eb';
             ctx.lineWidth = 3;
@@ -3520,7 +3492,6 @@ function initProjectileMotion() {
     function simulate() {
         const speed = Math.max(1, Number(speedInput.value) || 1);
         const angleDeg = Math.min(89, Math.max(1, Number(angleInput.value) || 45));
-        const targetX = Math.max(20, Number(targetInput.value) || 80);
 
         const angleRad = angleDeg * Math.PI / 180;
         const totalTime = (2 * speed * Math.sin(angleRad)) / g;
@@ -3536,32 +3507,19 @@ function initProjectileMotion() {
             points.push({ x, y: Math.max(0, y) });
         }
 
-        const xMax = Math.max(range, targetX) * 1.2;
+        const xMax = Math.max(range, 10) * 1.2;
         const yMax = Math.max(maxHeight, 10) * 1.25;
-        drawScene(points, xMax, yMax, targetX);
+        drawScene(points, xMax, yMax);
 
         timeEl.textContent = `${totalTime.toFixed(2)} s`;
         rangeEl.textContent = `${range.toFixed(2)} m`;
         heightEl.textContent = `${maxHeight.toFixed(2)} m`;
-
-        const miss = range - targetX;
-        if (Math.abs(miss) <= targetRadius) {
-            resultEl.textContent = '🎉 Hit! Perfect launch!';
-        } else if (miss < 0) {
-            resultEl.textContent = `📉 Missed short by ${Math.abs(miss).toFixed(2)} m`;
-        } else {
-            resultEl.textContent = `📈 Overshot by ${Math.abs(miss).toFixed(2)} m`;
-        }
+        resultEl.textContent = '✅ Calculated TOF, Hmax, and Range.';
     }
-
-    randomTargetBtn.addEventListener('click', () => {
-        targetInput.value = (40 + Math.random() * 170).toFixed(1);
-        simulate();
-    });
 
     launchBtn.addEventListener('click', simulate);
 
-    [speedInput, angleInput, targetInput].forEach((input) => {
+    [speedInput, angleInput].forEach((input) => {
         input.addEventListener('change', simulate);
     });
 
